@@ -36,8 +36,13 @@ exports.updateComponentOne = async (req, res) => {
 exports.getComponentOneCount = async (req, res) => {
   try {
     const count = await getCount('componentOne');
+    if (!count) {
+      res.status(200).json({ addCount: 0, updateCount: 0 });
+      return;
+    }
     res.status(200).json(count);
   } catch (error) {
+    console.error('Error retrieving Component One count:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -67,8 +72,13 @@ exports.updateComponentTwo = async (req, res) => {
 exports.getComponentTwoCount = async (req, res) => {
   try {
     const count = await getCount('componentTwo');
+    if (!count) {
+      res.status(200).json({ addCount: 0, updateCount: 0 });
+      return;
+    }
     res.status(200).json(count);
   } catch (error) {
+    console.error('Error retrieving Component Two count:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -98,8 +108,13 @@ exports.updateComponentThree = async (req, res) => {
 exports.getComponentThreeCount = async (req, res) => {
   try {
     const count = await getCount('componentThree');
+    if (!count) {
+      res.status(200).json({ addCount: 0, updateCount: 0 });
+      return;
+    }
     res.status(200).json(count);
   } catch (error) {
+    console.error('Error retrieving Component Three count:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
