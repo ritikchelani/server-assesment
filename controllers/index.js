@@ -103,3 +103,37 @@ exports.getComponentThreeCount = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+
+exports.getNewestComponentOne = async (req, res) => {
+  try {
+    const newestComponentOne = await ComponentOne.findOne().sort({ createdAt: -1 });
+    res.status(200).json(newestComponentOne);
+  } catch (error) {
+    console.error('Error retrieving newest Component One:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+exports.getNewestComponentTwo = async (req, res) => {
+  try {
+    const newestComponentTwo = await ComponentTwo.findOne().sort({ createdAt: -1 });
+    res.status(200).json(newestComponentTwo);
+  } catch (error) {
+    console.error('Error retrieving newest Component Two:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+exports.getNewestComponentThree = async (req, res) => {
+  try {
+    const newestComponentThree = await ComponentThree.findOne().sort({ createdAt: -1 });
+    res.status(200).json(newestComponentThree);
+  } catch (error) {
+    console.error('Error retrieving newest Component Three:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
